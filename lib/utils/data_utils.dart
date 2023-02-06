@@ -24,7 +24,7 @@ class DataUtils {
     }
   }
 
-  static String itemCodeKrString({
+  static String getItemCodeKrString({
     required ItemCode itemCode,
   }) {
     switch (itemCode) {
@@ -52,10 +52,12 @@ class DataUtils {
         return status.minFineDust < value;
       } else if (itemCode == ItemCode.PM25) {
         return status.minUltraFineDust < value;
-      } else if (itemCode == ItemCode.CO) {
-        return status.minCo < value;
       } else if (itemCode == ItemCode.NO2) {
         return status.minNO2 < value;
+      } else if (itemCode == ItemCode.O3) {
+        return status.min03 < value;
+      } else if (itemCode == ItemCode.CO) {
+        return status.minCo < value;
       } else if (itemCode == ItemCode.SO2) {
         return status.minSO2 < value;
       } else {

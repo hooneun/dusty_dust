@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class CardTitle extends StatelessWidget {
   final String title;
+  final Color backgroundColor;
 
   const CardTitle({
     required this.title,
+    required this.backgroundColor,
     Key? key,
   }) : super(key: key);
 
