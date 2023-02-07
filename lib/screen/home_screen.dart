@@ -2,7 +2,6 @@ import 'package:dusty_dust/component/category_card.dart';
 import 'package:dusty_dust/component/hourly_card.dart';
 import 'package:dusty_dust/component/main_app_bar.dart';
 import 'package:dusty_dust/component/main_drawer.dart';
-import 'package:dusty_dust/const/colors.dart';
 import 'package:dusty_dust/const/regions.dart';
 import 'package:dusty_dust/model/stat_and_status_model.dart';
 import 'package:dusty_dust/model/stat_model.dart';
