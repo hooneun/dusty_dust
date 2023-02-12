@@ -3,20 +3,19 @@ import 'package:dusty_dust/component/main_card.dart';
 import 'package:dusty_dust/model/stat_model.dart';
 import 'package:dusty_dust/utils/data_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HourlyCard extends StatelessWidget {
-  final String category;
   final Color darkColor;
   final Color lightColor;
-  final List<StatModel> stats;
   final String region;
+  final ItemCode itemCode;
 
   const HourlyCard({
-    required this.category,
     required this.darkColor,
     required this.lightColor,
-    required this.stats,
     required this.region,
+    required this.itemCode,
     Key? key,
   }) : super(key: key);
 
@@ -29,14 +28,17 @@ class HourlyCard extends StatelessWidget {
         children: [
           CardTitle(
             backgroundColor: darkColor,
-            title: '시간별 $category',
+            title: '시간별 ${DataUtils.getItemCodeKrString(itemCode: itemCode)}',
           ),
-          Column(
-            children: stats
-                .map(
-                  (stat) => renderRow(stat: stat),
-                )
-                .toList(),
+          ValueListenableBuilder(
+            valueListenable: Hive.box<StatModel>(itemCode.name).listenable(),
+            builder: (context, box, widget) => Column(
+              children: box.values
+                  .map(
+                    (stat) => renderRow(stat: stat),
+                  )
+                  .toList(),
+            ),
           ),
         ],
       ),
